@@ -1,0 +1,73 @@
+#!perl
+
+# DATE
+# VERSION
+
+use strict;
+use warnings;
+
+use Data::Dump;
+use Perinci::CmdLine::Any;
+use Term::Terminfo;
+
+our %SPEC;
+
+$SPEC{app} = {
+    v => 1.1,
+    summary => 'List terminal capabilities using Term::Terminfo',
+    args => {
+        by => {
+            schema => ['str*', in=>['capname', 'varname']],
+            default => 'varname',
+            pos => 0,
+            cmdline_aliases => {
+                'by_capname' => {is_flag=>1, summary => 'Shortcut for --by=capname', code=>sub { $_[0]{by} = 'capname' }},
+                'by_varname' => {is_flag=>1, summary => 'Shortcut for --by=varname', code=>sub { $_[0]{by} = 'varname' }},
+            },
+        },
+    },
+};
+sub app {
+    my %args = @_;
+    my $by = $args{by} // 'varname';
+
+    my $ti = Term::Terminfo->new;
+    my $res = [];
+    if ($by eq 'varname') {
+        for my $var ($ti->flag_varnames) { push @$res, {var=>$var, type=>'flag', value=>$ti->flag_by_varname($var)} }
+        for my $var ($ti->num_varnames ) { push @$res, {var=>$var, type=>'num' , value=>$ti->num_by_varname ($var)} }
+        for my $var ($ti->str_varnames ) { push @$res, {var=>$var, type=>'str' , value=>$ti->str_by_varname ($var)} }
+        return [200, "OK", $res, {'cmdline.default_format'=>'perl', 'table.fields'=>[qw/var type value/]}];
+    } else {
+        for my $cap ($ti->flag_capnames) { push @$res, {cap=>$cap, type=>'flag', value=>$ti->getflag($cap)} }
+        for my $cap ($ti->num_capnames ) { push @$res, {cap=>$cap, type=>'num' , value=>$ti->getnum ($cap)} }
+        for my $cap ($ti->str_capnames ) { push @$res, {cap=>$cap, type=>'str' , value=>$ti->getstr ($cap)} }
+        return [200, "OK", $res, {'cmdline.default_format'=>'perl', 'table.fields'=>[qw/cap type value/]}];
+    }
+}
+
+Perinci::CmdLine::Any->new(
+    url => '/main/app',
+)->run;
+
+# ABSTRACT:
+# PODNAME:
+
+=head1 SYNOPSIS
+
+ % term-terminfo
+
+Sample result:
+
+
+
+=head1 DESCRIPTION
+
+This is a simple CLI for L<Term::Terminfo>.
+
+
+=head1 SEE ALSO
+
+L<Term::Terminfo>
+
+B<terminfo> Unix utility
