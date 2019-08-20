@@ -17,3 +17,5 @@ querying terminal attributes (color support, size, other capabilities):
 =head1 SEE ALSO
 
 B<terminfo>, L<Term::Terminfo>
+
+L<App::XTermUtils>
