@@ -1,0 +1,24 @@
+#!perl
+
+# DATE
+# DIST
+# VERSION
+
+use strict;
+use warnings;
+
+use Term::Size;
+
+($columns, $rows) = Term::Size::chars *STDOUT{IO};
+print "$columns x $rows\n";
+
+# ABSTRACT: Print terminal size according to Term::Size
+
+=head1 SYNOPSIS
+
+ % term-size
+
+
+=head1 SEE ALSO
+
+L<Term::Size>

@@ -1,0 +1,22 @@
+#!perl
+
+# DATE
+# DIST
+# VERSION
+
+use 5.010001;
+use strict;
+use warnings;
+use Term::Encoding;
+say Term::Encoding::get_encoding;
+
+# ABSTRACT: Print terminal encoding according to Term::Encoding
+
+=head1 SYNOPSIS
+
+ % term-encoding
+
+
+=head1 SEE ALSO
+
+L<Term::Encoding>
