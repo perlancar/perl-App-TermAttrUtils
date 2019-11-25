@@ -9,9 +9,10 @@ use warnings;
 
 use Term::Size;
 
-($columns, $rows) = Term::Size::chars *STDOUT{IO};
+my ($columns, $rows) = Term::Size::chars *STDOUT{IO};
 print "$columns x $rows\n";
 
+# PODNAME:
 # ABSTRACT: Print terminal size according to Term::Size
 
 =head1 SYNOPSIS

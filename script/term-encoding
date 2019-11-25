@@ -10,6 +10,7 @@ use warnings;
 use Term::Encoding;
 say Term::Encoding::get_encoding;
 
+# PODNAME:
 # ABSTRACT: Print terminal encoding according to Term::Encoding
 
 =head1 SYNOPSIS
