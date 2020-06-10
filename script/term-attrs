@@ -1,6 +1,8 @@
 #!perl
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use strict;
@@ -23,7 +25,7 @@ sub run {
         color_depth   => $self->color_depth,
         term_width    => $self->term_width,
         term_height   => $self->term_height,
-        _term_attrs_debug_info => $self->_term_attrs_debug_info,
+        _termattr_debug_info => $self->{_termattr_debug_info},
     };
 }
 
@@ -41,7 +43,7 @@ MyApp->new->run;
 Sample result:
 
  {
-   _term_attrs_debug_info => {
+   _termattr_debug_info => {
                                color_depth_from   => "detect_terminal",
                                interactive_from   => "-t STDOUT",
                                term_height_from   => "term_size",
@@ -49,14 +51,14 @@ Sample result:
                                use_box_chars_from => "detect_terminal",
                                use_color_from     => "interactive + color_deth",
                                use_utf8_from      => "detect_terminal + LANG/LANGUAGE env must include \"utf8\"",
-                             },
-   color_depth            => 16777216,
-   interactive            => 1,
-   term_height            => 45,
-   term_width             => 192,
-   use_box_chars          => 1,
-   use_color              => 1,
-   use_utf8               => 1,
+                           },
+   color_depth          => 16777216,
+   interactive          => 1,
+   term_height          => 45,
+   term_width           => 192,
+   use_box_chars        => 1,
+   use_color            => 1,
+   use_utf8             => 1,
  }
 
 
