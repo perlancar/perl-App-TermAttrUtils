@@ -1,14 +1,15 @@
 #!perl
 
-# DATE
-# DIST
-# VERSION
-
 use 5.010001;
 use strict;
 use warnings;
 use Term::Encoding;
 say Term::Encoding::get_encoding;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 # PODNAME:
 # ABSTRACT: Print terminal encoding according to Term::Encoding

@@ -5,6 +5,11 @@ use warnings;
 use Term::Detect::Software qw(detect_terminal);
 use Data::Dump;
 
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
+
 dd detect_terminal();
 
 # PODNAME:
