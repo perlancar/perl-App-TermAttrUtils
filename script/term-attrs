@@ -1,12 +1,12 @@
 #!perl
 
+use strict;
+use warnings;
+
 # AUTHORITY
 # DATE
 # DIST
 # VERSION
-
-use strict;
-use warnings;
 
 package
     MyApp;

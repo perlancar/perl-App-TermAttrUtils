@@ -1,0 +1,40 @@
+#!perl
+
+use strict;
+use warnings;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
+
+package
+    MyApp;
+use Moo;
+with 'Term::App::Role::Attrs';
+
+package
+    main;
+
+my $app = MyApp->new;
+print "\n" for 1 .. $app->term_height;
+
+# ABSTRACT: Print a whole terminal height of blank lines
+# PODNAME:
+
+=head1 SYNOPSIS
+
+ % form-feed
+ % ff         ;# shorter alias
+
+
+=head1 DESCRIPTION
+
+
+=head1 SEE ALSO
+
+B<clear> Unix command, which also clears the scrollback buffer.
+
+Pressing C<Ctrl-L> on the terminal also "clears" the screen, by putting the
+current prompt line to the first line of the terminal and blanking the rest of
+the lines.

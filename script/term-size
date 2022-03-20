@@ -1,13 +1,14 @@
 #!perl
 
-# DATE
-# DIST
-# VERSION
-
 use strict;
 use warnings;
 
 use Term::Size;
+
+# AUTHORITY
+# DATE
+# DIST
+# VERSION
 
 my ($columns, $rows) = Term::Size::chars *STDOUT{IO};
 print "$columns x $rows\n";
